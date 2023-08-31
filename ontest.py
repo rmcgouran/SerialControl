@@ -44,6 +44,9 @@ def send_ascii_command(com_port, ascii_command):
 def main():
     """Detects all connected COM ports and sends a list of ASCII commands first, then a list of HEX commands."""
     com_ports = detect_com_ports()
+    if not com_ports:
+        print("No COM ports detected")
+        return
     hex_commands = [
         ("01 30 41 30 41 30 43 02 43 32 30 33 44 36 30 30 30 31 03 73 0D", True, 15), # Power On example, adjust as needed
         # Add more hex_commands as needed, with appropriate wait_for_reply and delay_after_reply values
